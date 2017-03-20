@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.voltor.ui.tabs.StorageControler">
+   <children>
+      <TableView fx:id="table" layoutY="26.0" prefHeight="456.0" prefWidth="1000.0">
+      </TableView>
+      <TextField fx:id="name" layoutX="318.0" layoutY="1.0" minWidth="138.0" prefHeight="25.0" prefWidth="159.0" />
+      <TextField fx:id="code" layoutX="557.0" layoutY="1.0" minWidth="123.0" prefHeight="25.0" prefWidth="159.0" />
+      <ComboBox fx:id="category" layoutY="1.0" prefHeight="25.0" prefWidth="159.0" />
+      <ComboBox fx:id="subCategory" layoutX="159.0" layoutY="1.0" prefHeight="25.0" prefWidth="159.0" />
+      <TextField fx:id="shtrihCode" layoutX="716.0" layoutY="1.0" minWidth="123.0" prefHeight="25.0" prefWidth="159.0" />
+      <Button layoutX="931.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#saveValue" text="Очистити" />
+      <TextField fx:id="count" layoutX="477.0" layoutY="1.0" minWidth="80.0" prefWidth="80.0" />
+   </children>
+</Pane>

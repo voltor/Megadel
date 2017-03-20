@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.voltor.ui.tabs.ProductsControler">
+   <children>
+      <TableView fx:id="table" layoutY="26.0" prefHeight="424.0" prefWidth="1150.0">
+      </TableView>
+      <TextField fx:id="name" layoutX="276.0" layoutY="1.0" minWidth="138.0" prefWidth="138.0" />
+      <TextField fx:id="price" layoutX="414.0" layoutY="1.0" minWidth="70.0" prefWidth="70.0" />
+      <TextField fx:id="priceOpt" layoutX="554.0" layoutY="1.0" minWidth="80.0" prefWidth="80.0" />
+      <TextField fx:id="code" layoutX="714.0" layoutY="1.0" minWidth="123.0" prefWidth="123.0" />
+      <ComboBox fx:id="category" layoutY="1.0" prefWidth="138.0" />
+      <ComboBox fx:id="subCategory" layoutX="138.0" layoutY="1.0" prefWidth="138.0" />
+      <TextField fx:id="shtrihCode" layoutX="837.0" layoutY="1.0" minWidth="123.0" prefWidth="123.0" />
+      <Button layoutX="1120.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#saveValue" text="Ok" />
+      <TextField fx:id="price1" layoutX="484.0" layoutY="1.0" minWidth="70.0" prefWidth="70.0" />
+      <TextField fx:id="priceOpt1" layoutX="634.0" layoutY="1.0" minWidth="80.0" prefWidth="80.0" />
+      <Button layoutX="1079.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#clearFields" text="Очистити" />
+      <TextField fx:id="commingPrice" layoutX="960.0" layoutY="1.0" minWidth="97.0" prefHeight="25.0" prefWidth="97.0" />
+   </children>
+</Pane>

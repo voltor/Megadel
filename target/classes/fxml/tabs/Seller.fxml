@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.voltor.ui.tabs.seller.SellerControler">
+   <children>
+      <TableView fx:id="table" layoutY="25.0" prefHeight="461.0" prefWidth="652.0" />
+      <TextField fx:id="name" prefHeight="25.0" prefWidth="168.0" snapToPixel="false" />
+      <TextField fx:id="email" layoutX="168.0" prefHeight="25.0" prefWidth="138.0" snapToPixel="false" />
+      <TextField fx:id="phone" layoutX="306.0" prefHeight="25.0" prefWidth="138.0" snapToPixel="false" />
+      <Button layoutX="620.0" mnemonicParsing="false" onMouseClicked="#saveValue" text="Ok" />
+      <TableView fx:id="tickHistoryTable" layoutX="674.0" layoutY="25.0" prefHeight="432.0" prefWidth="312.0" />
+      <Label layoutX="674.0" layoutY="466.0" text="Поповнити ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tickHistoryNewValue" layoutX="767.0" layoutY="464.0" prefHeight="25.0" prefWidth="127.0" />
+      <Button layoutX="954.0" layoutY="464.0" mnemonicParsing="false" onMouseClicked="#refillAccount" text="Ok" />
+      <TextField fx:id="tickHistoryDate" layoutX="674.0" prefHeight="25.0" prefWidth="150.0" />
+      <TextField fx:id="tickHistoryValue" layoutX="824.0" prefHeight="25.0" prefWidth="80.0" />
+      <TextField fx:id="tickHistoryType" layoutX="904.0" prefHeight="25.0" prefWidth="80.0" />
+      <ComboBox fx:id="priceType" layoutX="444.0" prefHeight="25.0" prefWidth="110.0" />
+   </children>
+</Pane>

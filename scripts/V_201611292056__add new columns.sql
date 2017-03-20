@@ -1,0 +1,1 @@
+ALTER TABLE products ADD COLUMN coming_price double precision;

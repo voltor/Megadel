@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.voltor.ui.tabs.report.selling.SellingReportControler">
+   <children>
+      <TableView fx:id="sellingPositionTable" layoutY="358.0" prefHeight="217.0" prefWidth="1000.0" />
+      <Label layoutY="1.0" text="Покупці">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="565.0" layoutY="1.0" textAlignment="RIGHT">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="sellerTable" layoutY="51.0" prefHeight="92.0" prefWidth="516.0" />
+      <TextField fx:id="sellerName" layoutY="26.0" prefHeight="25.0" prefWidth="168.0" snapToPixel="false" />
+      <TextField fx:id="sellerEmail" layoutX="168.0" layoutY="26.0" prefHeight="25.0" prefWidth="168.0" snapToPixel="false" />
+      <TextField fx:id="sellerPhone" layoutX="336.0" layoutY="26.0" prefHeight="25.0" prefWidth="138.0" snapToPixel="false" />
+      <Button layoutX="745.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#clean" prefHeight="45.0" prefWidth="233.0" text="Очистити">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutY="333.0" text="Список пунктів в накладній">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="sellingTable" layoutY="193.0" prefHeight="139.0" prefWidth="655.0" />
+      <Label layoutX="1.0" layoutY="143.0" text="Список накладних">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="sellingDate" layoutY="168.0" prefHeight="25.0" prefWidth="168.0" snapToPixel="false" />
+      <TextField fx:id="sellingSellerName" layoutX="168.0" layoutY="168.0" prefHeight="25.0" prefWidth="168.0" snapToPixel="false" />
+      <TextField fx:id="sellingUser" layoutX="336.0" layoutY="168.0" prefHeight="25.0" prefWidth="138.0" snapToPixel="false" />
+      <TextField fx:id="sellingSum" layoutX="474.0" layoutY="168.0" prefHeight="25.0" prefWidth="138.0" snapToPixel="false" />
+   </children>
+</Pane>

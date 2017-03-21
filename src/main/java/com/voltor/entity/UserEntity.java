@@ -33,8 +33,8 @@ public class UserEntity {
 	private String lastName;
 	@Column(name = "role")
 	private Role role;
-//	@ManyToOne
-//	@JoinColumn(name = "tick_id" )
+	@ManyToOne
+	@JoinColumn(name = "tick_id" )
 	private TickEntity tick;
 	
 	public String getAuthName() {

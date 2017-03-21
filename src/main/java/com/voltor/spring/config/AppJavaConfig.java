@@ -31,7 +31,7 @@ public class AppJavaConfig {
 	public DataSource dataSource() {
 		BasicDataSource basicDataSource = new org.apache.commons.dbcp.BasicDataSource();
 		basicDataSource.setDriverClassName("org.postgresql.Driver");
-		basicDataSource.setUrl("jdbc:postgresql://localhost:5432/megadel");
+		basicDataSource.setUrl("jdbc:postgresql://localhost:5433/megadel");
 		basicDataSource.setUsername("postgres");
 		basicDataSource.setPassword("postgres");
 		return basicDataSource;

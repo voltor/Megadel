@@ -98,16 +98,16 @@ public class UserService {
 		entity.setRole(bean.getRole());
 		
 		TickEntity tickEntity = null;
-//		if (bean.getTick() == null || bean.getTick().getId() == 0L) {
-//			tickEntity = new TickEntity();
-//			tickEntity.setValueUA(0.0);
-//			tickEntity.setValueUSA(0.0);
-//			tickEntity = tickService.add(tickEntity);
-//		} else {
-//			tickEntity = tickService.findOneById(bean.getTick().getId());
-//			tickEntity.setValueUA(bean.getTick().getValueUA());
-//			tickEntity.setValueUSA(bean.getTick().getValueUSA());
-//		}
+		if (bean.getTick() == null || bean.getTick().getId() == 0L) {
+			tickEntity = new TickEntity();
+			tickEntity.setValueUA(0.0);
+			tickEntity.setValueUSA(0.0);
+			tickEntity = tickService.add(tickEntity);
+		} else {
+			tickEntity = tickService.findOneById(bean.getTick().getId());
+			tickEntity.setValueUA(bean.getTick().getValueUA());
+			tickEntity.setValueUSA(bean.getTick().getValueUSA());
+		}
 		entity.setTick( tickEntity  );
 
 		return entity;

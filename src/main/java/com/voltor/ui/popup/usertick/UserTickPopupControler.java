@@ -1,5 +1,6 @@
 package com.voltor.ui.popup.usertick;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import com.voltor.util.UserTickUtils;
 
 @Component
 public class UserTickPopupControler {
@@ -49,12 +51,14 @@ public class UserTickPopupControler {
 //	private TextField usaNewExchange;
 	@FXML
 	private Label usa;
-	
+    @Autowired
+    private UserTickUtils userTickUtils;
+
 	private User user;
-	
-	public void initialize() {  
-		initUATickHistory();
-		initUSATickHistory();
+
+	public void initialize() {
+        userTickUtils.initTickHistory(uaTickHistoryModel,uaTable,uaDate,uaValue,uaType,
+                usaTickHistoryModel,usaTable,usaDate,usaValue,usaType);
 	}
 
 	private void updateData(){
@@ -63,21 +67,7 @@ public class UserTickPopupControler {
 		ua.setText(user.getTick().getValueUA().toString());
 		usa.setText(user.getTick().getValueUSA().toString());
 	}
-	private void initUATickHistory() {
-		uaTickHistoryModel.setTable(uaTable);
-		uaTickHistoryModel.setDate(uaDate);
-		uaTickHistoryModel.setValue(uaValue);
-		uaTickHistoryModel.setType(uaType);
-		uaTickHistoryModel.init();
-	}
-	
-	private void initUSATickHistory() {
-		usaTickHistoryModel.setTable(usaTable);
-		usaTickHistoryModel.setDate(usaDate);
-		usaTickHistoryModel.setValue(usaValue);
-		usaTickHistoryModel.setType(usaType);
-		usaTickHistoryModel.init();
-	}
+
 	
 //	public void exchage() {
 //		if( isValidateFields() ){

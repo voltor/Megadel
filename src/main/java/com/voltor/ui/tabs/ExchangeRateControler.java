@@ -1,5 +1,6 @@
 package com.voltor.ui.tabs;
 
+import com.voltor.util.UIComponentUtils;
 import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ExchangeRateControler {
  
 	@Autowired
-	private ExchangeRateService exchangeRateService; 
+	private ExchangeRateService exchangeRateService;
+
+	@Autowired
+	private UIComponentUtils componentUtils;
 	
 	private ExchangeRate editedValue;
 
@@ -40,16 +44,8 @@ public class ExchangeRateControler {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void createTable() {
-		TableColumn dateColl = new TableColumn("Дата");
-		dateColl.setMinWidth(148);
-		dateColl.setCellValueFactory(new PropertyValueFactory<ExchangeRate, ExchangeRate>("dateTime"));
-
-		TableColumn currencyColl = new TableColumn("Курс валюти");
-		currencyColl.setMinWidth(148);
-		currencyColl.setCellValueFactory(new PropertyValueFactory<ExchangeRate, ExchangeRate>("currency"));
-
-		table.getColumns().addAll( dateColl, currencyColl );
- 
+		componentUtils.addTableColumn(table, "дата", 148.0, ExchangeRate.class, "dateTime");
+		componentUtils.addTableColumn(table, "курс валюти", 148.0, ExchangeRate.class, "currency");
 	}
 
 	public void updateTable() {
@@ -77,23 +73,16 @@ public class ExchangeRateControler {
 
 	private boolean isValidateFields() { 
 		if (Strings.isNullOrEmpty(currency.getText())) {
-			showMessage("Будь-ласка, введіть курс валюти!");
+			componentUtils.showMessage("Будь-ласка, введіть курс валюти!");
 			return false;
 		}
 		try{
 			Double.parseDouble(currency.getText().trim());
 		} catch (NumberFormatException e) {
-			showMessage("Ви неправельно ввели курс валюти! Приклад 1253.25");
+			componentUtils.showMessage("Ви неправельно ввели курс валюти! Приклад 1253.25");
 			return false;
 		} 
 		return true;
 	}
 
-	private void showMessage(String contentText) {
-		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Увага!");
-		alert.setHeaderText(null);
-		alert.setContentText(contentText);
-		alert.showAndWait();
-	}
 }

@@ -26,7 +26,7 @@ public class CategoryControler {
 	@Autowired
 	private SubCategoryService subCategoryService;
 	@Autowired
-	private UIComponentUtils componentUrils;
+	private UIComponentUtils componentUtils;
 
 	@FXML
 	private TableView<Category> tableCategories;
@@ -64,19 +64,19 @@ public class CategoryControler {
 	}
 
 	private void createCategoryTable() {
-		componentUrils.addTableColumn(tableCategories, "назва", 148.0, Category.class, "name");
-		componentUrils.addTableColumn(tableCategories, "rод", 149.0, Category.class, "code");
-		componentUrils.addSelectionEventToTable(tableCategories, Category.class, e -> {
+		componentUtils.addTableColumn(tableCategories, "назва", 148.0, Category.class, "name");
+		componentUtils.addTableColumn(tableCategories, "rод", 149.0, Category.class, "code");
+		componentUtils.addSelectionEventToTable(tableCategories, Category.class, e -> {
 			editedCategoryValue = e;
 			writeCategoryFields();
 		});
 	}
 
 	private void createSubCategoryTable() {
-		componentUrils.addTableColumn(tableSubCategories, "група", 150.0, SubCategory.class, "categoryName");
-		componentUrils.addTableColumn(tableSubCategories, "назва", 148.0, SubCategory.class, "name");
-		componentUrils.addTableColumn(tableSubCategories, "код", 148.0, SubCategory.class, "code");
-		componentUrils.addSelectionEventToTable(tableSubCategories, SubCategory.class, e -> {
+		componentUtils.addTableColumn(tableSubCategories, "група", 150.0, SubCategory.class, "categoryName");
+		componentUtils.addTableColumn(tableSubCategories, "назва", 148.0, SubCategory.class, "name");
+		componentUtils.addTableColumn(tableSubCategories, "код", 148.0, SubCategory.class, "code");
+		componentUtils.addSelectionEventToTable(tableSubCategories, SubCategory.class, e -> {
 			editedSubCategoryValue = e;
 			writeSubCategoryFields();
 		});
@@ -145,7 +145,7 @@ public class CategoryControler {
 
 	private boolean isValidateCategoryFields() {
 		if (Strings.isNullOrEmpty(nameCategory.getText())) {
-			componentUrils.showMessage("Будь-ласка, введіть назву групи!");
+			componentUtils.showMessage("Будь-ласка, введіть назву групи!");
 			return false;
 		}
 		return true;
@@ -153,11 +153,11 @@ public class CategoryControler {
 
 	private boolean isValidateSubCategoryFields() {
 		if (categories.getValue() == null) {
-			componentUrils.showMessage("Будь-ласка, виберіть групу!");
+			componentUtils.showMessage("Будь-ласка, виберіть групу!");
 			return false;
 		}
 		if ( Strings.isNullOrEmpty( nameSubCategory.getText() ) ) {
-			componentUrils.showMessage("Будь-ласка, введіть назву бренду!");
+			componentUtils.showMessage("Будь-ласка, введіть назву бренду!");
 			return false;
 		}
 		return true;

@@ -8,7 +8,7 @@ public enum PriceType {
 	
 	private String name;
 
-	private PriceType(String name) {
+	PriceType(String name) {
 		this.name = name;
 	}
 	

@@ -88,9 +88,7 @@ public class SellingPosition {
 		if (getClass() != obj.getClass())
 			return false;
 		SellingPosition other = (SellingPosition) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
+        return id == other.id;
+    }
 	
 }

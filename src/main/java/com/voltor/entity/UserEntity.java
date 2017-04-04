@@ -59,10 +59,8 @@ public class UserEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		UserEntity other = (UserEntity) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
+        return id == other.id;
+    }
 	public String getAuthPassword() {
 		return authPassword;
 	}

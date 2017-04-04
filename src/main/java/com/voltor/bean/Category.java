@@ -58,9 +58,7 @@ public class Category {
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	} 
+        return id == other.id;
+    }
 	
 }

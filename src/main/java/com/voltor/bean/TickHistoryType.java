@@ -11,7 +11,7 @@ public enum TickHistoryType {
 	
 	private String name;
 
-	private TickHistoryType(String name) {
+	TickHistoryType(String name) {
 		this.name = name;
 	}
 	

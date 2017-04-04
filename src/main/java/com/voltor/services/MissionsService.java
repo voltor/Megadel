@@ -17,7 +17,7 @@ public class MissionsService {
         final StringBuilder fileContents = new StringBuilder(2000);
         final InputStream is = this.getClass().getResourceAsStream(specsPath + missionName);
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is));) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
             String line;
             while ((line = br.readLine()) != null) {
                 fileContents.append(line).append("\n");

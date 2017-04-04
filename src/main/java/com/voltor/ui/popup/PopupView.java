@@ -23,7 +23,7 @@ public class PopupView {
 			rootNode = loader.load();
 		
 			Stage mainStage = new Stage();
-			UserTickPopupControler controller = loader.<UserTickPopupControler>getController();
+			UserTickPopupControler controller = loader.getController();
 			controller.setUser( user );
 			Scene scene = new Scene( rootNode );
 			mainStage.setScene( scene );

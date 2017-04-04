@@ -20,7 +20,7 @@ public enum UIView {
 	private String name;
 	private String path;
 	
-	private UIView(String name, String path) {
+	UIView(String name, String path) {
 		this.name = name;
 		this.path = path;
 	}

@@ -2,6 +2,7 @@ package com.voltor.ui.tabs.selling;
 
 import java.util.Collection;
 
+import com.voltor.util.UIModelsUtils;
 import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -101,40 +102,13 @@ public class ProductForSellingModel {
         	} else {
         		p.setPriceType( null );
         	}
-            if (matchesFilter(p)) {
+            if (UIModelsUtils.matchesFilter(p,table,category,subCategory,name,shtrihCode,code)) {
                 filteredData.add(p);
             }
         }
         updateTable();
     }
-	private boolean matchesFilter(Product p) {
-		if(category.getValue()!=null){
-			if(!p.getCategory().equals(category.getValue())){
-				return false;
-			}
-		}
-		if(subCategory.getValue()!=null){
-			if(!p.getSubCategory().equals(subCategory.getValue())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(name.getText()) ){
-			if(!p.getName().toLowerCase().contains(name.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(code.getText())){
-			if( Strings.isNullOrEmpty(p.getCode()) || !p.getCode().toLowerCase().contains(code.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(shtrihCode.getText()) ){
-			if( Strings.isNullOrEmpty(p.getShtrihCode()) || !p.getShtrihCode().toLowerCase().contains(shtrihCode.getText().toLowerCase())){
-				return false;
-			}
-		}
-		return true;
-	}
+
 
 	private void createTable() {
 		componentUtils.addTableColumn(table, "група", 172.0, Product.class, "category");

@@ -22,7 +22,7 @@ public class UserTickPopupUATickHistoryModel {
 	@Autowired
 	private TickHistoryService tickHistoryService;
 	@Autowired
-	private UIComponentUtils componentUrils;
+	private UIComponentUtils componentUtils;
 
 	private TableView<TickHistoryEntity> table;
 	private TextField date;
@@ -46,9 +46,9 @@ public class UserTickPopupUATickHistoryModel {
 	}
 	
 	private void initListenersComponent(){
-		componentUrils.addValueChangeListenerToTextField(date, this::updateFilteredData );
-		componentUrils.addValueChangeListenerToTextField(value, this::updateFilteredData );
-		componentUrils.addValueChangeListenerToTextField(type, this::updateFilteredData );
+		componentUtils.addValueChangeListenerToTextField(date, this::updateFilteredData );
+		componentUtils.addValueChangeListenerToTextField(value, this::updateFilteredData );
+		componentUtils.addValueChangeListenerToTextField(type, this::updateFilteredData );
 	}
 
 	private void updateFilteredData() {
@@ -85,10 +85,10 @@ public class UserTickPopupUATickHistoryModel {
 	}
 
 	private void createTable() {
-		componentUrils.addTableColumn(table, "дата", 150.0, TickHistoryEntity.class, "date");
-		componentUrils.addTableColumn(table, "значення", 80.0, TickHistoryEntity.class, "value");
-		componentUrils.addTableColumn(table, "тип", 80.0, TickHistoryEntity.class, "type");
-		componentUrils.addTableColumn(table, "користувач", 102.0, TickHistoryEntity.class, "userName");
+		componentUtils.addTableColumn(table, "дата", 150.0, TickHistoryEntity.class, "date");
+		componentUtils.addTableColumn(table, "значення", 80.0, TickHistoryEntity.class, "value");
+		componentUtils.addTableColumn(table, "тип", 80.0, TickHistoryEntity.class, "type");
+		componentUtils.addTableColumn(table, "користувач", 102.0, TickHistoryEntity.class, "userName");
 	}
 
 	public void updateTable() {

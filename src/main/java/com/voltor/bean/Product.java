@@ -84,10 +84,8 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
+        return id == other.id;
+    }
 
 	public Product getThis() {
 		return this;

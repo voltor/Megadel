@@ -2,6 +2,8 @@ package com.voltor.ui.tabs.seller;
 
 import java.util.Collection;
 
+import com.voltor.bean.Selling;
+import com.voltor.util.UISellerModelUtils;
 import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -73,7 +75,6 @@ public class SellerControler {
 		historyModel.setType(tickHistoryType);
 		historyModel.init();
 	}
-
 	private void initViewComponents() {
 		initListenersComponent();
 		createTable();
@@ -95,39 +96,12 @@ public class SellerControler {
         filteredData.clear();
 
         for (Seller p : masterData) {
-            if (matchesFilter(p)) {
+            if (UISellerModelUtils.matchesFilter(p,name,email,phone)) {
                 filteredData.add(p);
             }
         }
         updateTable();
 
-	}
-
-	private boolean matchesFilter(Seller p) {
-		if(priceType.getValue()!=null){
-			if(p.getPriceType()== null){
-				return false;
-			}
-			if(!p.getPriceType().equals(priceType.getValue())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(name.getText()) ){
-			if(!p.getName().toLowerCase().contains(name.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(phone.getText()) ){
-			if( Strings.isNullOrEmpty(p.getPhone()) || !p.getPhone().toLowerCase().contains(phone.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(email.getText()) ){
-			if( Strings.isNullOrEmpty(p.getEmail()) || !p.getEmail().toLowerCase().contains(email.getText().toLowerCase())){
-				return false;
-			}
-		}
-		return true;
 	}
 
 	private void createTable() {

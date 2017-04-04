@@ -2,6 +2,7 @@ package com.voltor.ui.tabs.seller;
 
 import java.util.Collection;
 
+import com.voltor.util.UITickHistoryModelUtils;
 import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -43,15 +44,15 @@ public class SellerTickHistoryModel {
 	 private Collection<TickHistoryEntity> masterData = null;
 	 private ObservableList<TickHistoryEntity> filteredData = FXCollections.observableArrayList();
 
-	public void init() {
-		masterData = FXCollections.observableArrayList();
-		initViewComponents();
-		initListenersComponent();
-	}
-
 	private void initViewComponents() {
 		createTable();
 		updateFilteredData();
+	}
+
+	void init() {
+		masterData = FXCollections.observableArrayList();
+		initViewComponents();
+		initListenersComponent();
 	}
 	
 	private void initListenersComponent(){
@@ -79,36 +80,17 @@ public class SellerTickHistoryModel {
 	}
 
 	private void updateFilteredData() {
-		if(isWriting){
+		if (isWriting) {
 			return;
 		}
-        filteredData.clear();
+		filteredData.clear();
 
-        for (TickHistoryEntity p : masterData) {
-            if (matchesFilter(p)) {
-                filteredData.add(p);
-            }
-        }
-        updateTable();
-    }
-	private boolean matchesFilter(TickHistoryEntity p) {
-		
-		if( !Strings.isNullOrEmpty( date.getText() )){
-			if(!p.getDate().toString().toLowerCase().contains(date.getText().toLowerCase())){
-				return false;
+		for (TickHistoryEntity p : masterData) {
+			if (UITickHistoryModelUtils.matchesFilter(p,date,value,type)) {
+				filteredData.add(p);
 			}
 		}
-		if( !Strings.isNullOrEmpty( type.getText() )){
-			if(!p.getType().toString().toLowerCase().contains(type.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty( value.getText() ) ){
-			if( !p.getValue().toString().toLowerCase().contains(value.getText().toLowerCase()) ){
-				return false;
-			}
-		}
-		return true;
+		updateTable();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

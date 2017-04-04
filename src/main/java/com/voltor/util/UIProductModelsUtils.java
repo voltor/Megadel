@@ -11,7 +11,7 @@ import org.assertj.core.util.Strings;
 /**
  * Created by Petro on 04.04.2017.
  */
-public class UIModelsUtils {
+public class UIProductModelsUtils {
     public static boolean matchesFilter(Product p, TableView<Product> table,
                                         ComboBox<Category> category,
                                         ComboBox<SubCategory> subCategory,
@@ -42,6 +42,40 @@ public class UIModelsUtils {
             if( Strings.isNullOrEmpty(p.getShtrihCode()) || !p.getShtrihCode().toLowerCase().contains(shtrihCode.getText().toLowerCase())){
                 return false;
             }
+        }
+        return true;
+    }
+
+    public static boolean isValidateFields(Product editedValue,
+                                           UIComponentUtils componentUtils,
+                                           TextField price,
+                                           TextField count) {
+        if (editedValue == null || editedValue.getId()==0L) {
+            componentUtils.showMessage("Будь-ласка, виберіть товар!");
+            return false;
+        }
+        if (!Strings.isNullOrEmpty(price.getText())) {
+            try {
+                Double.parseDouble(price.getText().trim());
+            } catch (NumberFormatException e) {
+                componentUtils.showMessage("Ви неправельно ввели ціну! Приклад 1253.25");
+                return false;
+            }
+        } else {
+            componentUtils.showMessage("Ви не ввели ціну!");
+            return false;
+        }
+
+        if (!Strings.isNullOrEmpty(count.getText())) {
+            try {
+                Integer.valueOf(count.getText().trim());
+            } catch (NumberFormatException e) {
+                componentUtils.showMessage("Ви неправельно ввели кількість! Приклад 55");
+                return false;
+            }
+        } else {
+            componentUtils.showMessage("Ви не ввели кількість!");
+            return false;
         }
         return true;
     }

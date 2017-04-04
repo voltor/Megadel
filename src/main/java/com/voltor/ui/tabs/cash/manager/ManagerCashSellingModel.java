@@ -2,6 +2,7 @@ package com.voltor.ui.tabs.cash.manager;
 
 import java.util.Collection;
 
+import com.voltor.util.UISellingReportModelUtils;
 import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -71,32 +72,13 @@ public class ManagerCashSellingModel {
 		}
         filteredData.clear();
         for (Selling p : masterData) {
-            if (matchesFilter(p)) {
+            if (UISellingReportModelUtils.matchesFilter(p,date,name,sum)) {
                 filteredData.add(p);
             }
         }
         
         updateTable();
 
-	}
-
-	private boolean matchesFilter(Selling p) {
-		if( !Strings.isNullOrEmpty(name.getText()) ){
-			if(!p.getSeller().getName().toLowerCase().contains(name.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty( date.getText() )){
-			if(!p.getDate().toString().toLowerCase().contains(date.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(sum.getText()) ){
-			if( !p.getSum().toString().contains(sum.getText()) ){
-				return false;
-			}
-		}
-		return true;
 	}
 
 	private void initViewComponents() {
@@ -106,21 +88,7 @@ public class ManagerCashSellingModel {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void createTable() {
-		TableColumn dateColl = new TableColumn("дата");
-		dateColl.setMinWidth(168);
-		dateColl.setCellValueFactory(new PropertyValueFactory<Coming, Coming>("date"));
-
-		TableColumn providerNameColl = new TableColumn("ім'я");
-		providerNameColl.setMinWidth(168);
-		providerNameColl.setCellValueFactory(new PropertyValueFactory<Coming, Coming>("name"));
-TableColumn userNameColl = new TableColumn("користувач");
-		userNameColl.setMinWidth(138);
-		userNameColl.setCellValueFactory(new PropertyValueFactory<Coming, Coming>("userName"));
-		TableColumn sumColl = new TableColumn("сума");
-		sumColl.setMinWidth(138);
-		sumColl.setCellValueFactory(new PropertyValueFactory<Coming, Coming>("sum"));
-
-		table.getColumns().addAll(dateColl, providerNameColl, userNameColl, sumColl);
+		UISellingReportModelUtils.createTable(table);
 		table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 			public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
 				if (table.getSelectionModel().getSelectedItem() != null) {

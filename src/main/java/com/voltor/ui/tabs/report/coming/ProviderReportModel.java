@@ -2,6 +2,7 @@ package com.voltor.ui.tabs.report.coming;
 
 import java.util.Collection;
 
+import com.voltor.util.UIProviderModelsUtils;
 import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -72,36 +73,12 @@ public class ProviderReportModel {
         filteredData.clear();
 
         for (Provider p : masterData) {
-            if (matchesFilter(p)) {
+            if (UIProviderModelsUtils.matchesFilter(p,name,firmName,email,phone)) {
                 filteredData.add(p);
             }
         }
         updateTable();
 
-	}
-
-	private boolean matchesFilter(Provider p) {
-		if( !Strings.isNullOrEmpty(name.getText()) ){
-			if(!p.getName().toLowerCase().contains(name.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(firmName.getText()) && !Strings.isNullOrEmpty(p.getFirmName())){
-			if(!p.getFirmName().toLowerCase().contains(firmName.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(phone.getText()) && !Strings.isNullOrEmpty(p.getPhone()) ){
-			if(!p.getPhone().toLowerCase().contains(phone.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty(email.getText()) && !Strings.isNullOrEmpty(p.getEmail()) ){
-			if(!p.getEmail().toLowerCase().contains(email.getText().toLowerCase())){
-				return false;
-			}
-		}
-		return true;
 	}
 
 	private void initViewComponents() {

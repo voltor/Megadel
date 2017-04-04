@@ -2,6 +2,7 @@ package com.voltor.ui.tabs.organization;
 
 import java.util.Collection;
 
+import com.voltor.util.UITickHistoryModelUtils;
 import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -77,31 +78,12 @@ public class OrganizationUATickHistoryModel {
         filteredData.clear();
 
         for (TickHistoryEntity p : masterData) {
-            if (matchesFilter(p)) {
+            if (UITickHistoryModelUtils.matchesFilter(p,date,value,type)) {
                 filteredData.add(p);
             }
         }
         updateTable();
     }
-	private boolean matchesFilter(TickHistoryEntity p) {
-		
-		if( !Strings.isNullOrEmpty( date.getText() )){
-			if(!p.getDate().toString().toLowerCase().contains(date.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty( type.getText() )){
-			if(!p.getType().toString().toLowerCase().contains(type.getText().toLowerCase())){
-				return false;
-			}
-		}
-		if( !Strings.isNullOrEmpty( value.getText() ) ){
-			if( !p.getValue().toString().toLowerCase().contains(value.getText().toLowerCase()) ){
-				return false;
-			}
-		}
-		return true;
-	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void createTable() {

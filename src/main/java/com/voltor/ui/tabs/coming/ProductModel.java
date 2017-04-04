@@ -2,7 +2,7 @@ package com.voltor.ui.tabs.coming;
 
 import java.util.Collection;
 
-import com.voltor.util.UIModelsUtils;
+import com.voltor.util.UIProductModelsUtils;
 import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -89,6 +89,37 @@ public class ProductModel {
 		componentUtils.addValueChangeListenerToTextField(code, this::updateFilteredData);
 	}
 
+	boolean isValidateFields() {
+		if (editedValue == null || editedValue.getId()==0L) {
+			componentUtils.showMessage("Будь-ласка, виберіть товар!");
+			return false;
+		}
+		if (!Strings.isNullOrEmpty(price.getText())) {
+			try {
+				Double.parseDouble(price.getText().trim());
+			} catch (NumberFormatException e) {
+				componentUtils.showMessage("Ви неправельно ввели ціну! Приклад 1253.25");
+				return false;
+			}
+		} else {
+			componentUtils.showMessage("Ви не ввели ціну!");
+			return false;
+		}
+
+		if (!Strings.isNullOrEmpty(count.getText())) {
+			try {
+				Integer.valueOf(count.getText().trim());
+			} catch (NumberFormatException e) {
+				componentUtils.showMessage("Ви неправельно ввели кількість! Приклад 55");
+				return false;
+			}
+		} else {
+			componentUtils.showMessage("Ви не ввели кількість!");
+			return false;
+		}
+		return true;
+	}
+
 	private void updateFilteredData() {
 		if(isWriting){
 			return;
@@ -96,7 +127,7 @@ public class ProductModel {
         filteredData.clear();
 
         for (Product p : masterData) {
-            if (UIModelsUtils.matchesFilter(p,table,category,subCategory,name,shtrihCode,code)) {
+            if (UIProductModelsUtils.matchesFilter(p,table,category,subCategory,name,shtrihCode,code)) {
                 filteredData.add(p);
             }
         }
@@ -148,37 +179,6 @@ public class ProductModel {
 		isWriting=false;
 	}
 
-	boolean isValidateFields() {
-		if (editedValue == null || editedValue.getId()==0L) {
-			componentUtils.showMessage("Будь-ласка, виберіть товар!");
-			return false;
-		}
-		if (!Strings.isNullOrEmpty(price.getText())) {
-			try {
-				Double.parseDouble(price.getText().trim());
-			} catch (NumberFormatException e) {
-				componentUtils.showMessage("Ви неправельно ввели ціну! Приклад 1253.25");
-				return false;
-			}
-		} else {
-			componentUtils.showMessage("Ви не ввели ціну!");
-			return false;
-		}
-		
-		if (!Strings.isNullOrEmpty(count.getText())) {
-			try {
-				Integer.valueOf(count.getText().trim());
-			} catch (NumberFormatException e) {
-				componentUtils.showMessage("Ви неправельно ввели кількість! Приклад 55");
-				return false;
-			}
-		} else {
-			componentUtils.showMessage("Ви не ввели кількість!");
-			return false;
-		}
-		return true;
-	}
-	
 	void setTable(TableView<Product> table) {
 		this.table = table;
 	}

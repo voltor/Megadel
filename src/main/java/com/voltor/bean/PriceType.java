@@ -8,6 +8,7 @@ public enum PriceType {
 	
 	private String name;
 
+	//FIXME: Why did you removed 'private'? This enum only for use, not for create!!!
 	PriceType(String name) {
 		this.name = name;
 	}

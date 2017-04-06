@@ -20,6 +20,7 @@ public enum UIView {
 	private String name;
 	private String path;
 	
+	//FIXME: Why did you removed 'private'? This enum only for use, not for create!!!
 	UIView(String name, String path) {
 		this.name = name;
 		this.path = path;

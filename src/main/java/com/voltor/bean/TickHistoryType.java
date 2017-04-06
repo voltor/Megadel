@@ -10,7 +10,7 @@ public enum TickHistoryType {
 	ADDED_FOR_USER  ("Попов...");
 	
 	private String name;
-
+	//FIXME: Why did you removed 'private'? This enum only for use, not for create!!!
 	TickHistoryType(String name) {
 		this.name = name;
 	}
